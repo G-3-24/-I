@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>IP Location Lookup</title>
+</head>
+<body>
+	<h1>IP Location Lookup</h1>
+	<p>Your IP address is: <span id="ip"></span></p>
+	<p>Your location information:</p>
+	<ul id="location"></ul>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$.getJSON("https://ipinfo.io/json", function(response) {
+				$("#ip").text(response.ip);
+				$("#location").append("<li>City: " + response.city + "</li>");
+				$("#location").append("<li>Region: " + response.region + "</li>");
+				$("#location").append("<li>Country: " + response.country + "</li>");
+				$("#location").append("<li>Postal Code: " + response.postal + "</li>");
+				$("#location").append("<li>Timezone: " + response.timezone + "</li>");
+			});
+		});
+	</script>
+</body>
+</html>
